@@ -1,10 +1,10 @@
 <script setup lang="ts">
-
+import TestECharts from './views/TestECharts.vue'
 </script>
 
 <template>
   <div>
-    <div class="bg-[#ab2f44] !text-[pink]">哈哈哈</div>
+    <TestECharts />
   </div>
 </template>
 
