@@ -52,7 +52,7 @@ export default defineConfig(({ mode }) => {
       port: VITE_PORT,
       // 本地跨域代理
       proxy:
-        VITE_PROXY_DOMAIN_REAL.length > 0
+        VITE_PROXY_DOMAIN_REAL?.length > 0
           ? {
             [VITE_PROXY_DOMAIN]: {
               target: VITE_PROXY_DOMAIN_REAL,

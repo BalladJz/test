@@ -4,9 +4,8 @@
 
 <template>
   <div>
-    <h1>高德</h1>
+    <div class="bg-[#ab2f44] !text-[pink]">哈哈哈</div>
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
