@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import TestECharts from './views/TestECharts.vue'
+import TestECharts from '@/views/TestECharts.vue'
+
 </script>
 
 <template>

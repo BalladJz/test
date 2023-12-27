@@ -1,6 +1,7 @@
-import { fileURLToPath, URL } from "node:url";
-import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
+import { defineConfig, loadEnv } from "vite";
+import { resolve } from "path";
+import { fileURLToPath } from "url";
 
 /** 当前执行node命令时文件夹的地址（工作目录） */
 const root: string = process.cwd();
@@ -8,6 +9,18 @@ const root: string = process.cwd();
 const regExps = (value: string, reg: string): string => {
   return value.replace(new RegExp(`^${reg}`, "g"), "");
 };
+
+/** 路径查找 */
+const pathResolve = (dir: string): string => {
+  return resolve(__dirname, '.', dir)
+}
+
+/** 设置别名 */
+const alias: Record<string, string> = {
+  '/@': pathResolve('src'),
+  '@build': pathResolve('build'),
+  '@': fileURLToPath(new URL('./src', import.meta.url))
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -20,11 +33,12 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: VITE_PUBLIC_PATH,
-    plugins: [vue(), ],
+    plugins: [vue(),],
     resolve: {
-      alias: {
-        "@": fileURLToPath(new URL("./src", import.meta.url)),
-      },
+      alias
+      // path: {
+      //   "@": resolve(__dirname, './src')
+      // }
     },
     server: {
       host: true,
