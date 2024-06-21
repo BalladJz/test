@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import TestECharts from '@/views/TestECharts.vue'
 import MapContainer from '@/views/MapContainer.vue'
+import TestCom from '@/views/TestCom.vue'
 </script>
 
 <template>
-  <div>
-    <!-- <TestECharts /> -->
+  <div class="h-full">
     <MapContainer />
   </div>
 </template>
