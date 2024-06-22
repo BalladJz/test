@@ -40,13 +40,12 @@ watch(isVisible, (visible) => {
 </script>
 
 <template>
-  <div id="container" class="w-[100%]" style="height: calc(100%)" />
-  <div class="flex items-center flex-col justify-center"></div>
+  <div id="container" style="height: 100%" />
 </template>
 
-<!-- <style scoped lang="scss">
+<style scoped lang="scss">
 .container {
-    width: vw(200);
-    width: vh(100);
+  width: vw(200);
+  width: vh(100);
 }
-</style> -->
+</style>
