@@ -1,12 +1,7 @@
-<script setup lang="ts">
-import MapContainer from '@/views/MapContainer.vue'
-import TestCom from '@/views/TestCom.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="h-full">
-    <MapContainer />
-  </div>
+  <router-view></router-view>
 </template>
 
 <style scoped></style>
