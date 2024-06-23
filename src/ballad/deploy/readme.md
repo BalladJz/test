@@ -7,3 +7,5 @@
 ### 修改 事件 on 触发方式为 workflow_dispatch
 
 ### 定义 jobs: 并定义两项 job1 job2 工作流
+
+### 利用 yml 数组来表示步骤 在steps 中用小横杠 表示执行步骤 -run (执行两个步骤 pwl/--ls 、 node --version)
