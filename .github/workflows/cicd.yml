@@ -4,11 +4,11 @@ on:
   push
   # workfolw_dispatch:
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    setps:
-      - run: pwl
-      - run: ls
+#   job1:
+#     runs-on: ubuntu-latest
+#     setps:
+#       - run: pwl
+#       - run: ls
   job2:
     runs-on: windows-latest
     steps:
