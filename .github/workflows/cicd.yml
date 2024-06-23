@@ -1,12 +1,13 @@
 name: reploy
 
-on: push
-    # workfolw_dispatch:
-jobs: 
-    job1:
-        setps:
-            - run: pwl
-            - run: ls
-    job2:
-        steps:
-            - run: node --version
+on:
+  push
+  # workfolw_dispatch:
+jobs:
+  job1:
+    setps:
+      - run: pwl
+      - run: ls
+  job2:
+    steps:
+      - run: node --version
