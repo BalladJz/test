@@ -7,7 +7,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: pwl
+      - run: pwd
       - run: ls
   job2:
     runs-on: windows-latest
