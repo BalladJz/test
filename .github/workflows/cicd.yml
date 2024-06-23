@@ -1,3 +1,9 @@
 name: reploy
 
-on: workfolw_dispatch:
+on: 
+    # pull
+    workfolw_dispatch:
+
+jobs: 
+    job1:        
+    job2:        
