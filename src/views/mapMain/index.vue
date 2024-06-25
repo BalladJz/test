@@ -8,12 +8,12 @@ const isVisible = ref(false)
 const initMap = async () => {
   // 本地配置 安全密钥（写在别处也行，确保这行代码 比 AMapLoader.load 先执行即可）
   window._AMapSecurityConfig = {
-    securityJsCode: import.meta.env.VITE_AMAP_SECURITY_JS_CODE
+    securityJsCode: import.meta.env.ENV_AMAP_SECURITY_JS_CODE
   }
 
   const myMap = await AMapLoader.load({
     // @ts-ignore
-    key: import.meta.env.VITE_AMAP_KEY, // 申请好的Web端开发者Key，首次调用 load 时必填
+    key: import.meta.env.ENV_AMAP_KEY, // 申请好的Web端开发者Key，首次调用 load 时必填
     version: '2.0', // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
     // plugins: ['ToolBar', 'Scale'], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
     plugins: ['AMap.MarkerCluster', 'AMap.DistrictSearch']

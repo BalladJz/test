@@ -25,6 +25,52 @@
 #### 开发和生产
 ` 开发 pnpm run dev`
 ` 生产 vite 依赖于 rollup 进行构建 `
-` 新建对应模式下的config文件 利用策略模式进行集成`
+` 新建对应模式下的 config 文件 利用策略模式进行集成`
 
-#### 
+#### vite的环境变量的处理
+` 补充：为什么vite.config.ts 可以书写成esmodule的格式，这是因为vite它在读取这个vite.config.ts的时候会率先解析文件语法，如果发现是esmodule规范，会直接将你的esmodule规范进行替换成commonjs规范  `
+
+` vite 内置了 dotenv(多塔恩物)第三方库来实现 获取环境变量 （dotenv会自动读取 .env文件，并解析这个文件中的环境变量，利用split“=”来分割最后组装成一个键值对的对象，并将其注入到 process 这个对象上）**(但是vite考虑到和其他配置的一些冲突的问题，他不会直接注入到process对象下)**`
+
+
+
+```js
+// 设计到 vite.config.ts中的一些配置
+// - root
+// - envDir: 用来配置当前环境变量的文件地址
+```
+
+` vite也给我们提供了一些补偿措施，利用loadEnv()这个方法可以获取到环境变量的配置，这只在服务端，而在客户端则利用import.meta.env 来获取环境变量 `
+
+```js
+/**
+ * 这个方法有三个参数
+ * 第一个参数：mode(vite中defineConfig的形参会携带)，vite 开发环境是 development，相当于我们执行 pnpm run dev 命令会默认加上 --mode development => 是执行的 pnpm run dev --mode development，所以mode就是 development
+ * 第二个参数：process.cwd()，返回当前node进程的工作目录（执行命令的当前目录的路径）
+ * 第三个参数：执行的env文件名，vite默认就是 .env 可以不传
+ * 
+ * .env: 所有环境需要用到的变量
+ * .env.development: 开发环境需要用到的环境变量（默认情况下vite 将我们的开发环境取名为development）
+ * .env.production: 生产环境需要用到的环境变量（默认情况下vite 将我们的生产环境取名为production）
+ * 
+ */
+// const env  = loadEnv(mode, process.cwd(), '.env')
+
+```
+
+```js
+// 当我们调用loadEnv()方法时，它会做如下几件事情：
+// 1、直接找到.env文件 并解析其中的环境变量，并放进一个对象里
+// 2、会讲传进来的mode这个变量进行拼接 => .env.development，并根据我们提供的目录去取对应的配置文件进行解析，并放进一个对象
+// 3、我们可以理解为：
+const baseEnvConfig = '读取的.env文件配置'
+const modeEnvConfig = '读取的.env.xxxx 相关文件的配置'
+const envConfig = {...modeEnvConfig, ...baseEnvConfig}
+// 如果有相同配置项，后一个modeEnvConfig的配置，会覆盖前一个baseEnvConfig的配置项
+
+```
+
+`  以上是服务端通过loadEnv方法来获取环境变量，而在客户端 则使用 vite => import.meta.env.XXX 来获取相关的环境变量； 环境变量文件中 默认需要设置以 VITE_ 开头的变量，不然也获取不到变量 `
+<br/>
+` vite 做了一个拦截，它为了防止我们将隐私性的变量直接宋金 import.meta.env中，所以它做了一层拦截，如果你的环境变量不是以 VITE_ 开头的，它就不会帮我们注入到客户端中取，如果我们想要更改这个前缀，需要去  defineConfig中配置{ envPrefix: 'ENV_' }，envPrefix属性值 是开发者可以自定义前缀，（这个名称只影响客户端 不影响服务端）  `
+
