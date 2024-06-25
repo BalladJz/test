@@ -19,6 +19,14 @@
 5、github actions
 
 6、SCSS
+
+7、eslint
+
+8、prettier
+
+9、stylelint
+
+10、husky
 ```
 
 ## Project Setup

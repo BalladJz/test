@@ -14,5 +14,13 @@
 
 #### 利用 git push origin 本地分支名:远程仓库分支名 可以推送本地分支的代码到远程仓库中指定的分支下
 
+#### 利用 git branch -vv 查看所有本地分支及其关联的远程分支
+
+#### 利用 git rev-parse --abbrev-ref --symbolic-full-name @{u} 这个命令会输出当前分支所跟踪的远程分支的名称。
+
+#### 利用 git rev-parse --abbrev-ref --symbolic-full-name <branch>@{u} 查看特定分支所跟踪的远程分支，将 `<branch>` 替换为你想查看的分支名称。
+
+#### 利用 git config --get-regexp branch  查看特定分支所跟踪的远程分支 
+
 
 # Issues
