@@ -15,7 +15,7 @@ const routeList = computed(() => {
       <template v-for="route in routeList" :key="route.path">
         <router-link
           :to="route.children?.[0].path"
-          class="flex flex-col justify-center items-start pl-4 h-[40px] my-4 py-4 bg-[skyblue]"
+          class="flex flex-col justify-center items-start pl-4 h-[40px] my-4 py-4 bg-[#6c8bd7]"
         >
           {{ route.children?.[0].meta.name ?? '-' }}
         </router-link>
