@@ -27,7 +27,7 @@
 `在开发环境，会vite会自己做，在生产环境，vite会全权交给rollup的库去完成生产打包`
 <br/>
 
-***依赖预构建***
+**依赖预构建**
 <br/>
 
 `vite只支持 esmodule 格式，需要处理的是各种三方依赖，以及三方依赖的依赖他们不一定是 esmodule，相比如 react、axios等它们采用的commonjs规范`
@@ -50,22 +50,22 @@
 
 
 #### 开发和生产
-` 开发 pnpm run dev`
+`开发 pnpm run dev`
 <br/>
 
-` 生产 vite 依赖于 rollup 进行构建 `
+`生产 vite 依赖于 rollup 进行构建`
 <br/>
 
-` 新建对应模式下的 config 文件 利用策略模式进行集成`
+`新建对应模式下的 config 文件 利用策略模式进行集成`
 <br/>
 
 
 #### vite的环境变量的处理
-` 补充：为什么vite.config.ts 可以书写成esmodule的格式，这是因为vite它在读取这个vite.config.ts的时候会率先解析文件语法，如果发现是esmodule规范，会直接将你的esmodule规范进行替换成commonjs规范  `
+`补充：为什么vite.config.ts 可以书写成esmodule的格式，这是因为vite它在读取这个vite.config.ts的时候会率先解析文件语法，如果发现是esmodule规范，会直接将你的esmodule规范进行替换成commonjs规范`
 <br/>
 
 
-` vite 内置了 dotenv(多塔恩物)第三方库来实现 获取环境变量 （dotenv会自动读取 .env文件，并解析这个文件中的环境变量，利用split“=”来分割最后组装成一个键值对的对象，并将其注入到 process 这个对象上）**(但是vite考虑到和其他配置的一些冲突的问题，他不会直接注入到process对象下)**`
+`vite 内置了 dotenv(多塔恩物)第三方库来实现 获取环境变量 （dotenv会自动读取 .env文件，并解析这个文件中的环境变量，利用split“=”来分割最后组装成一个键值对的对象，并将其注入到 process 这个对象上）**(但是vite考虑到和其他配置的一些冲突的问题，他不会直接注入到process对象下)**`
 
 
 ```js
@@ -74,7 +74,7 @@
 // - envDir: 用来配置当前环境变量的文件地址
 ```
 
-` vite也给我们提供了一些补偿措施，利用loadEnv()这个方法可以获取到环境变量的配置，这只在服务端，而在客户端则利用import.meta.env 来获取环境变量 `
+`vite也给我们提供了一些补偿措施，利用loadEnv()这个方法可以获取到环境变量的配置，这只在服务端，而在客户端则利用import.meta.env 来获取环境变量`
 
 ```js
 /**
@@ -103,10 +103,10 @@ const envConfig = {...modeEnvConfig, ...baseEnvConfig}
 // 如果有相同配置项，后一个modeEnvConfig的配置，会覆盖前一个baseEnvConfig的配置项
 ```
 
-`  以上是服务端通过loadEnv方法来获取环境变量，而在客户端 则使用 vite => import.meta.env.XXX 来获取相关的环境变量； 环境变量文件中 默认需要设置以 VITE_ 开头的变量，不然也获取不到变量 `
+`以上是服务端通过loadEnv方法来获取环境变量，而在客户端 则使用 vite => import.meta.env.XXX 来获取相关的环境变量； 环境变量文件中 默认需要设置以 VITE_ 开头的变量，不然也获取不到变量`
 <br/>
 
-` vite 做了一个拦截，它为了防止我们将隐私性的变量直接宋金 import.meta.env中，所以它做了一层拦截，如果你的环境变量不是以 VITE_ 开头的，它就不会帮我们注入到客户端中取，如果我们想要更改这个前缀，需要去  defineConfig中配置{ envPrefix: 'ENV_' }，envPrefix属性值 是开发者可以自定义前缀，（这个名称只影响客户端 不影响服务端） `
+`vite 做了一个拦截，它为了防止我们将隐私性的变量直接宋金 import.meta.env中，所以它做了一层拦截，如果你的环境变量不是以 VITE_ 开头的，它就不会帮我们注入到客户端中取，如果我们想要更改这个前缀，需要去  defineConfig中配置{ envPrefix: 'ENV_' }，envPrefix属性值 是开发者可以自定义前缀，（这个名称只影响客户端 不影响服务端）`
 <br/>
 
 
