@@ -19,7 +19,9 @@ const alias: Record<string, string> = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-
+  optimizeDeps: {
+    exclude: ['lodash-es'] // 当遇到 lodash-es 这个依赖的时候，不进行 依赖与构建 
+  },
   plugins: [
     vue(),
     vueJsx(),

@@ -13,6 +13,7 @@ specifiers:
   echarts: ^5.4.3
   eslint: ^8.49.0
   eslint-plugin-vue: ^9.17.0
+  lodash-es: ^4.17.21
   npm-run-all2: ^6.1.1
   pinia: ^2.1.7
   prettier: ^3.0.3
@@ -27,6 +28,7 @@ specifiers:
 dependencies:
   '@amap/amap-jsapi-loader': 1.0.1
   echarts: 5.5.0
+  lodash-es: 4.17.21
   pinia: 2.1.7_2w5cp5yj4g4owhdkms3ernwotq
   vue: 3.4.29_typescript@5.2.2
   vue-router: 4.3.3_vue@3.4.29
@@ -2079,6 +2081,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}

@@ -45,14 +45,6 @@ const Vue = webpack_require("vue");
 <br/>
 
 
-#### vite 与 webpack的 区别
-`因为webpack支持多种模块化，他一开始必须要统一模块化代码，所以意味着他需要将所有的依赖全部读一遍`
-<br/>
-
-`vite会不会直接把webpack干翻，vite是基于es modules的，侧重点不一样，webpack更多的关注兼容性，而vite关注浏览器端的开发体验`
-<br/>
-
-
 #### vite 与 create-vite 的 区别
 `比如我们敲了 yarn create vite`
 <br/>
@@ -74,30 +66,40 @@ const Vue = webpack_require("vue");
 `相当于 webpack 与 vue-cli 的关系 （out of box），create vite内置了vite`
 <br/>
 
-`在默认情况下，我们esmodule去导入资源时，要么绝对路径或，要么相对路径`
+`默认情况下（无任何构建工具），我们的esmodule去导入资源的时候，要么是绝对路径，要么是相对路径，如果是直接使用 import _ from 'lodash，而又在没有构建工具时，浏览器也不知道有node_modules的存在，浏览器也不知道如何去寻找资源`
 <br/>
 
-`在三方依赖时，浏览器不去直接读取node_modules是因为浏览器承载不了那么多东西的 读取，因为打包工具 webpack vite rollup`
+`既然我们的最佳实践是需要node_modules， 为什么浏览器不直接搜寻node_modules呢？`
+<br/>
+
+`因为：浏览器端的资源都是通过网络请求获取到的，依赖的中也会有其他三方依赖，浏览器不去直接读取node_modules是因为浏览器承载不了那么多东西的，虽然commonjs支持，但也是而服务端读取本地资源，不会发生网络请求`
+<br/> 
+
+`而  vite 就是来做代码处理的`
 <br/>
 
 
 #### vite的预加载(依赖预构建)
-`在处理第三方依赖的时候，如果遇到了有非绝对路径和非相对路径的引用，它会尝试路径补全`
+`在处理第三方依赖的时候，如果遇到了有非绝对路径和非相对路径的引用（import、require），它则会尝试开启路径补全`
+```js
+// 比如
+import _ from 'lodash'
+// 补全后
+import lodash_xxx_xxx from '/node_modules/.vite/lodash'
+// 找寻依赖的过程是自当前目录一次向上查找的过程，直到搜寻到根目录或者搜寻到对应的依赖为止
+
+// 在开发环境，会vite会自己做，在生产环境，vite会全权交给rollup的库去完成生产打包
+```
 <br/>
 
-`在开发环境，会vite会自己做，在生产环境，vite会全权交给rollup的库去完成生产打包`
-<br/>
- 
-**依赖预构建**
-<br/>
 
 `vite只支持 esmodule 格式，需要处理的是各种三方依赖，以及三方依赖的依赖他们不一定是 esmodule，相比如 react、axios等它们采用的commonjs规范`
 <br/>
 
-`所以vite 需要解决的是：首先会找到对应的依赖，然后调用esbuild（对js语法进行统一处理的库），将其它规范的代码转换成esmodule规范，然后放到当前目录下的node_modules/.vite/deps，同时对esmodule规范的各个模块进行统一集成`
+`所以vite 需要解决的是：首先会找到对应的依赖，然后调用esbuild（对js语法进行统一处理的库，go语言写的），将其它规范的代码转换成esmodule规范，然后放到当前目录下的node_modules/.vite/deps，同时对esmodule规范的各个模块进行统一集成，最后只生成一个或几个模块`
 <br/>
 
-**解决了3个问题**
+**解决了3个问题（官方说了两个）**
 <br/>
 
 `1、不同的第三方包会有不同的导出格式（这是vite没法约束人家的事情）`

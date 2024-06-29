@@ -1,5 +1,6 @@
 <script setup lang="ts">
-//
+import _ from 'lodash-es'
+console.log('lodash-es', _)
 </script>
 
 <template>
@@ -8,6 +9,4 @@
   </div>
 </template>
 
-<!-- <style scoped lang="scss">
-/*  */
-</style> -->
+<style scoped lang="scss"></style>
