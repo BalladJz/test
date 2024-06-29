@@ -234,3 +234,33 @@ div.className = componentACss.footer;
 // 5、将componentA.module.css内容进行全部抹除，替换成JS脚本
 // 6、将创建的映射对象在脚本中进行默认导出
 ```
+
+
+#### vite.config.ts 中的css 配置
+`css.modules`
+<br/>
+
+```js
+/** 类名命名规则 */
+css.nodules.localsConvention: 'camelCase'
+// camelCase      以小驼峰的规则 如果使用了中划线链接的方式也会存在
+// camelCaseOnly  只能以 以小驼峰的规则 清除中划线的规则
+// dashes         以中划线链接的规则 如果使用了小驼峰的方式也会存在
+// dashesOnly     只能以 以中划线链接的规则 清除小驼峰的规则
+
+/** 是否开启模块化 */
+css.nodules.scopeBeHaviour: 'local' // 有hash 就是开启了模块化，因为他可以保证产生不同hash值的来控制我们的样式类名不被覆盖
+// local   模块化
+// global  全局化
+
+/** 生成类名规则 */
+css.nodules.generateScopedName: '' | fun
+// 可以查阅postcss文档查看配置规章
+// 函数的话 可以根据返回值来生成，类名的
+
+css.nodules.hashPrefix: 'Ballad'
+// 生成hash会根据你的类名 +一些其他的字符串(文件名 + 他内部随机生成一个字符串)去进行生成，如果你想要你生成hash更加的复杂一点，你可以配置hashPrefix，你配置的这个字符串会参与到最终的hash生成，(hash:只要你的字符串有一个字不一样，那么生成的hash就完全不一样，但是只要你的字符串完全一样，生成的hash就会一样)
+
+// 表示不想参与css模块化的文件路径
+css.nodules.globalModulePaths: []
+```
