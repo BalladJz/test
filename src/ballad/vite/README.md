@@ -285,3 +285,6 @@ css.preprocessorOptions.sass: {}
 
 
 #### vite 配置文件中css 配置流程（devSourcemap篇）
+`文件之间的索引`
+
+`假设我们的代码被压缩或者被编译过了，这个时候假设程序出错，他将不会产生错误的位置信息，如果设置了sourceMap，他就会有一个索引文件，直接爆出原文件错误位置`

@@ -70,8 +70,8 @@ export default defineConfig({
             },
             sass: {}
         },
-        devSourcemap: {
-            
-        }
+
+        // 是否开启css 文件索引 默认值false
+        devSourcemap: true // 开启css的sourceMap(文件索引)
     }
 })
