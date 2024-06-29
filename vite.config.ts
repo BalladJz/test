@@ -20,8 +20,12 @@ const envResolver = {
   }
 }
 
+/**
+ * command  "build" | "serve"
+ * mode 'development' | 'staging' | ''production'
+ */
 export default defineConfig(({ command, mode }) => {
-  // 是build 还是serve 主要取决于我们敲的命令是 开发环境 还是生产环境
+  // 是 build 还是 serve 主要取决于我们敲的命令是 开发环境 还是生产环境
   // console.log('command', command); // "build" | "serve"
   // console.log('mode', mode); // 'development' | 'staging' | ''production'
   return envResolver[command]()

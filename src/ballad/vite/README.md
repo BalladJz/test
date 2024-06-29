@@ -112,7 +112,7 @@ import lodash_xxx_xxx from '/node_modules/.vite/lodash'
 <br/>
 
 
-#### 开发和生产
+#### 开发和生产 / vite的环境变量的处理
 `开发 pnpm run dev`
 <br/>
 
@@ -122,8 +122,6 @@ import lodash_xxx_xxx from '/node_modules/.vite/lodash'
 `新建对应模式下的 config 文件 利用策略模式进行集成`
 <br/>
 
-
-#### vite的环境变量的处理
 `补充：为什么vite.config.ts 可以书写成esmodule的格式，这是因为vite它在读取这个vite.config.ts的时候会率先解析文件语法，如果发现是esmodule规范，会直接将你的esmodule规范进行替换成commonjs规范`
 <br/>
 
@@ -173,8 +171,20 @@ const envConfig = {...modeEnvConfig, ...baseEnvConfig}
 <br/>
 
 
-#### 实现一套简单的 vite 开发服务器
+#### 实现一套简单的 vite 开发服务器(vite 是如何让浏览器认识.vue 文件的)
 `在浏览器、或服务器眼里，文件都是字符串，根据Content-type的值去解析`
+<br/>
+
+`不同的宿主环境会给JS赋予一些不同的能力，比如浏览器会给JS赋予BOM（document.getElementById('DOM节点的id名')），node会给JS赋予 path fs等等模块`
+<br/>
+
+```js
+// vite 是如何让浏览器认识.vue 文件的
+// 如果发现是 Vue文件 会做一个字符串替换：VueContent.toString().find('template'), 如果匹配到了就会直接全部进行字符串替换
+// 其实会走AST 正则语法分析 ==> 调用Vue.createElement() --> 构建原生DOM
+// 并且 返回给浏览器时 设置 Content-type的类型 Content-type: 'text-javascript' 告诉浏览器以什么样的格式去解析这个文件
+// 在浏览器和服务器眼里，你的文件都是字符串，至于怎么解析 全看Content-type的值去解析
+```
 <br/>
 
 

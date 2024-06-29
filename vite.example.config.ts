@@ -33,3 +33,8 @@ export default defineConfig({
     host: '0.0.0.0',
   }
 })
+
+// /** @type import("vite").UserConfig  */
+// const viteConfig = {
+  
+// }
