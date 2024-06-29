@@ -188,4 +188,49 @@ const envConfig = {...modeEnvConfig, ...baseEnvConfig}
 <br/>
 
 
-#### vite 处理css
+#### vite 处理 css
+`vite天生就支持对css文件的直接处理`
+<br/>
+
+```js
+// 比如：
+
+// 1、vite在读取到main.js中引用到了Index.css
+// 2、直接使用fs模块去读取index.css中文件内容
+// 3、直接创建一个style标签，将index.css中文件内容直接copy进style标签里
+// 4、将style标签插入到index.html的head中
+// 5、将该css文件中的内容直接替换为is脚本(方便热更新或者css模块化)，同时设置Content-Type为js 从而让浏览器以JS脚本的形式来执行该css后缀的文件
+```
+
+```js
+// 协同开发 css属性名冲突
+
+// .css文件 = = = = = = = = = = = = = = = = = = = = 
+import "./componentA.css"
+
+const div = document.createElement("div");
+document.body.appendchild(div);
+div.className = 'footer';
+
+// .module.css文件 = = = = = = = = = = = = = = = = = = = = 
+import componentACss from "./componentA.module.css"
+
+// componentACss { footer: footer_xxx_xxx }
+const div = document.createElement("div");
+document.body.appendchild(div);
+div.className = componentACss.footer;
+
+// 解决方案:
+// 1、把对应的的css文件名 修改问 .module.css文件
+// 2、以esmodule方式导入，会构建生成 => 以类名为键，类名+哈希值 为值的键值对 的对象
+// 3、再重新赋值给对应的DOM
+
+
+// 大概原理 （全都是基于node）
+// 1、module.css(module是一种约定，表示需要开启css模块化)
+// 2、他会将你的所有类名进行一定规则的替换(将footer替换成:footer_i22st_1)
+// 2、同时创建一个映射对象{footer: 'footer_i22st_1' },
+// 4、将替换过后的内容塞进style标签里然后放入到head标签中
+// 5、将componentA.module.css内容进行全部抹除，替换成JS脚本
+// 6、将创建的映射对象在脚本中进行默认导出
+```
