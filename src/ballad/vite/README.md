@@ -264,3 +264,24 @@ css.nodules.hashPrefix: 'Ballad'
 // 表示不想参与css模块化的文件路径
 css.nodules.globalModulePaths: []
 ```
+
+
+#### vite 配置文件中css 配置流程（preprocessorOptions篇）
+`css.preprocessorOptions`
+<br/>
+
+`主要是用来配置 css 预处理器的一些全局参数 与 css.modules同级配置`
+<br/>
+
+```js
+// 假设没有使用构建工具，我们又想着编译less 文件的话
+// yarn add less # lessc的编译器 相当于 =>  ts 可以用 tsc index.ts 编译ts 文件
+
+// 整个配置对象都会最终给到less的执行参数（全局参数）中去 比如 npx lessc --math="always" xxx.css 
+// https://lesscss.org/usage/#less-options
+css.preprocessorOptions.less: {}
+css.preprocessorOptions.sass: {}
+```
+
+
+#### vite 配置文件中css 配置流程（devSourcemap篇）

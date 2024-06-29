@@ -54,7 +54,24 @@ export default defineConfig({
 
             // 表示不想参与css模块化的文件路径
             // globalModulePaths: []
-
+        },
+        preprocessorOptions: {
+            // https://lesscss.org/usage/#less-options
+            less: { // 在webpack里就给less-loader 去配置就好了
+                // padding: (100px / 2);
+                // padding: 100px / 2;
+                // 它都会处理
+                math: 'always',
+                // 定义全局变量 @mainColor: 'red'
+                // 可以 全局使用 不需要多次导入文件使用
+                globalVars: {
+                    mainColor: 'red'
+                }
+            },
+            sass: {}
+        },
+        devSourcemap: {
+            
         }
     }
 })
