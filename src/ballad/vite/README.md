@@ -1,6 +1,50 @@
 # vite 配置（基于 vite.config.ts 文件进行配置）
 
 
+#### vite 相较于 webpack的 的优势
+`然而，当我们开始构建越来越大型的应用时，需要处理的 JavaScript 代码量也呈指数级增长。包含数千个模块的大型项目相当普遍。基于 JavaScript 开发的工具就会开始遇到性能瓶颈：通常需要很长时间（甚至是几分钟！）才能启动开发服务器，即使使用模块热替换（HMR），文件修改后的效果也需要几秒钟才能在浏览器中反映出来。如此循环往复，迟钝的反馈会极大地影响开发者的开发效率和幸福感。`
+```js
+// 起因:我们的项目越大 ---->构建工具(webpack)所要处理的js代码就越多 【跟webpack的一个构建过程(工作流程)有关系】
+// 造成的结果:构建工具需要很长时间才能启动开发服务器(启动开发服务器 --->把项目跑起来)
+
+// webpack能不能改?如果一旦要改 那么将会动到webpack的大动脉
+
+// webpack支持多种模块化：但我们的工程可能不只是跑在浏览器端，也可能跑在服务端
+
+// 这一段代码最终会到浏览器里去运行
+const lodash = require("lodash"); //-commonjs-规范
+import Vue from "vue"; // es6.module
+// webpack是允许我们这么写的
+
+/**
+ * webpack的编译原理，AST 抽象语法分析的工具 分析出你写的这个js文件有哪些导入和导出操作构建工具是运行在服务端的，虽然前端是无法修改文件的，但服务端是可以修改的，webpack通过立即执行函数修改好，然后通过立即执行函数，启动项目
+ */
+
+(function(modules){
+  function webpack_require(){ }
+    // 入口是index.js
+    // 通过webpack的配置文件得来的 webpack.config.js  ./src/index.js
+    modules[entry](webpack_require)
+
+}，({
+    "./src/index.js": (webpack_require) => {
+        const lodash = webpack require("lodash");
+        const Vue = webpack _require("vue");
+    }
+}))
+
+// webpack的一个转换结果
+const lodash = webpack_require("lodash");
+const Vue = webpack_require("vue");
+
+// 最终造成的结果是需要很长的时间才能启动开发服务器，
+// 而且vite和webpack的侧重点不一样:
+// webpack 支持多种模块化，他一开始必须要统一模块化代码，所以意味着他需要将所有的依赖全部读一遍，然后构建依赖、打包、然后开启 entry（项目越大 工作越多）（它关注于兼容性）
+// vite    是基于esmodule的，关注浏览器的开发体验，首先开启entry(入口main.ts)，然后按需加载模块，（无论项目有多大，通过entry，只会加载需要的模块，不会把依赖全部解析完）
+```
+<br/>
+
+
 #### vite 与 webpack的 区别
 `因为webpack支持多种模块化，他一开始必须要统一模块化代码，所以意味着他需要将所有的依赖全部读一遍`
 <br/>
@@ -10,7 +54,24 @@
 
 
 #### vite 与 create-vite 的 区别
-`相当于 webpack 与 vue-cli 的关系 （out of box）`
+`比如我们敲了 yarn create vite`
+<br/>
+
+`1、它会帮我们全局安装一个create-vite（vite脚手架）（就相当于在vue-cli内置了webpack一样）`
+<br/>
+
+`2、直接运行这个create-vite bin目录下的一个执行配置`
+<br/>
+
+```js
+// 预设，就是 create-vite帮我们配置好了所有场景的配置：下载vite、post-css、less、babel，同时把配置调整到了最佳实践
+// vue-cli     ---> 内置了 webpack
+// create-vite ---> 内置了 vite
+// vue团队希望弱化vite的存在感，不希望新的用户使用vite的时候觉得不好用，所以在脚手架里直接内置了vite，并把配置调整到了最佳实践
+```
+<br/>
+
+`相当于 webpack 与 vue-cli 的关系 （out of box），create vite内置了vite`
 <br/>
 
 `在默认情况下，我们esmodule去导入资源时，要么绝对路径或，要么相对路径`
@@ -26,7 +87,7 @@
 
 `在开发环境，会vite会自己做，在生产环境，vite会全权交给rollup的库去完成生产打包`
 <br/>
-
+ 
 **依赖预构建**
 <br/>
 
