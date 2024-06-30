@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 import { resolve } from "path";
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+const postcssPresetEnv = require('postcss-preset-env')
 
 /** 路径查找 */
 const pathResolve = (dir: string): string => {
@@ -72,14 +73,17 @@ export default defineConfig({
         // 定义全局变量 @mainColor: 'red'
         // 可以 全局使用 不需要多次导入文件使用
         globalVars: {
-            mainColor: 'red'
+          mainColor: 'red'
         }
       },
       sass: {}
-  },
-
-  // 是否开启css 文件索引 默认值false
-  devSourcemap: true // 开启css的sourceMap(文件索引)
+    },
+    // 是否开启css 文件索引 默认值false
+    devSourcemap: true,// 开启css的sourceMap(文件索引)
+    // 在vite中配置postcss 就是直接在 vite 中的 css 属性里配置即可，它就相当于配置了 postcss.config.js， 而且次处的优先级是高于 postcss.config.js文件的
+    postcss: {
+      plugins: [postcssPresetEnv(/** pluginOptions */)]
+    }
   }
 })
 
