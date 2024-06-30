@@ -286,5 +286,104 @@ css.preprocessorOptions.sass: {}
 
 #### vite 配置文件中css 配置流程（devSourcemap篇）
 `文件之间的索引`
+<br/>
 
 `假设我们的代码被压缩或者被编译过了，这个时候假设程序出错，他将不会产生错误的位置信息，如果设置了sourceMap，他就会有一个索引文件，直接爆出原文件错误位置`
+<br/>
+
+
+#### vite postcss
+`vite 天生就对postcss有非常良好的支持`
+<br/>
+
+`postcss 它的工作系统和全屋净水系统一致，保证css执行起来万无一失， 类似于 babel 对 js 的新语法进行降级 来保证低版本的浏览器也能读懂js的新语法`
+<br/>
+
+```js
+// postcss 
+// 1、就是对未来的css 属性进行降级 比如 定义的 --global-color: 'red'; 
+//    实际开发中可以用 background-color: var(--global-color); 
+//    进行语法降级为   background-color: 'red';
+
+// 2、前缀补全（--webkit-xxx），postcss不仅内置了less的功能，还会对新的css语法和过旧的css语法进行处理，保证浏览器都能认识，
+
+```
+<br/>
+
+
+```js
+// 使用postcss
+// 1、安全依赖
+// pnpm i postcss-cli postcss -D // postcss-cli就是提供脚手架的一些命令，在终端可以， postcss就是做编译工作的
+
+// 2、书写描述文件
+// 新建 postcss.config.js
+
+const postcssPresetEnv = require('postcss-preset-env')
+module.export = {
+    // 添加预设环境 postcss-preset-env // pnpm i postcss-preset-env -D
+    // 预设环境里是包含很多的插件的
+    // 做语法编译 less sass (语法嵌套 函数 变量)
+    plugins: [postcssPresetEnv(/** pluginOptions */)]
+}
+
+/**
+ * postcss的前世今生
+ * 之前 postcss可以处理css的全流程，包括处理现在sass less能处理的语法嵌套 函数 变量，但随着sass less每次更新，postcss也需要更新
+ * 时间久了，他就不会的配合预处理器的工作，而只是处理语法兼容的问题，这些是 sass和 less不能做到的（比如未来的 css语法和过老的语法，加前缀补全）
+ * 现在只是 自己用less或者sass 编译完了，直接把编译结果给到postcss，他来做语法兼容等问题就行
+ * 
+ * 所以业内就产生了一个新的说法，postcss是后处理器，less sass作为postcss的插件就可以了，在配置文件中去配置对应的功能就行
+ */
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
