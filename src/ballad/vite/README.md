@@ -327,6 +327,8 @@ module.export = {
     plugins: [postcssPresetEnv(/** pluginOptions */)]
 }
 
+// 这里  比如 用 use-select 会在前面加上 --webkit 和 --moz 对谷歌和火狐浏览器做兼容问题
+
 /**
  * postcss的前世今生
  * 之前 postcss可以处理css的全流程，包括处理现在sass less能处理的语法嵌套 函数 变量，但随着sass less每次更新，postcss也需要更新
@@ -342,7 +344,19 @@ module.export = {
 `在vite中配置 postcss 就是直接在 vite 中的 css 属性里配置即可(与module同级)，它就相当于配置了 postcss.config.js， 而且vite中的配置的优先级是高于 postcss.config.js文件的`
 
 
+#### vite 对静态资源的处理 以及 路径别名的设置
+`静态资源：在服务端，除了动态API以外，99%都是静态资源，而在前端一般会把图片，视频（src下的assets目录下）`
+<br/>
 
+`vite 对静态资源基本上是开箱即用的，除了一些特殊资源 比如 svg`
+```js
+对于前端来说的 静态资源导入，如果导入路径上加上 ?raw 的话 会把资源变成 二进制的字符串 （Buffer）
+                 svg资源 如果导入路径上加上 ?skipsvgo 直接当成组件渲染 ？？？
+
+如果用的是vite构建工具，导入时会转成一个正常的对象，
+而在其他的一些构建工具里导入json文件，导入的还是是json字符串 
+
+```
 
 
 
