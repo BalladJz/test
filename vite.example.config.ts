@@ -63,6 +63,7 @@ export default defineConfig({
       // 表示不想参与css模块化的文件路径
       // globalModulePaths: []
     },
+    // 对全局变量 以及 css 的属性值 进行一些计算等方法的配置
     preprocessorOptions: {
       // https://lesscss.org/usage/#less-options
       less: { // 在webpack里就给less-loader 去配置就好了

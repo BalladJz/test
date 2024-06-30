@@ -339,6 +339,7 @@ module.export = {
 
 
 #### vite 配置文件中的css配置流程 postcss篇
+`在vite中配置 postcss 就是直接在 vite 中的 css 属性里配置即可(与module同级)，它就相当于配置了 postcss.config.js， 而且vite中的配置的优先级是高于 postcss.config.js文件的`
 
 
 
