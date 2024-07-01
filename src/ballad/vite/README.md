@@ -359,6 +359,9 @@ module.export = {
 ```
 
 
+#### vite  resolve.alias的原理
+
+
 
 
 
