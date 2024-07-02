@@ -1,8 +1,8 @@
 
 ```js
 /**
- * ## html第一行代码的作用
- * <!DOCTTYPE html> 用于声明文档的类型，并告诉浏览器使用哪种html标准来解析页面
+ * html第一行代码的作用
+ * <!DOCTYPE html> 用于声明文档的类型，并告诉浏览器使用哪种html标准来解析页面
  */
 
 
@@ -92,7 +92,11 @@
  *    如果希望将文档的基础URL定义为https：//www.abc.com，
  *    则可以使用如下语句：<base href="http://www.abc.com">
  *    如果文档的超链接指向welcome.html,则它实际上指向的是如下url地址：https://www.abc.com/welocme.html。
- * 2.target 定义了当文档中的链接点击后的打开方式_blank，_self，_parrent，_top。
+ * 2.target 定义了当文档中的链接点击后的打开方式
+ *    _blank    在同一框架或窗口中打开链接（默认值）
+ *    _self     在新窗口或新标签页中打开链接。
+ *    _parent   在父框架中打开链接。如果没有父框架，则在同一框架中打开。
+ *    _top      在顶级窗口中打开链接，即将链接在整个浏览器窗口中打开。
  */
 
 
