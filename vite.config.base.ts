@@ -79,4 +79,22 @@ export default defineConfig({
     //         plugins: [postcssPresetEnv(/** pluginOptions */)]
     //     }
     // }
+
+    // 构建生产包时的一些配置策略
+    build: {
+        // 生产打包 vite 会交给 rollup 打包 因为也会做一些语法降级，兼容等问题
+        rollupOptions: {
+            // 控制输出
+            output: {
+                // 在 rollup 里面，hash 将代表你的文件名和文件内容进行组合计算得来的结果
+                assetFileNames: '[hash].[name].[ext]',
+            }
+        },
+        // 控制静态资源，如果小于 4096k(默认值)，将会把资源转成base64格式的资源，大于将不会转
+        assetsInlineLimit: 4096,
+        // 打包后的文件名 默认是 dist
+        // outDir: 'testDist',
+        // 配置输出目录中静态（图片、视频）资源目录 默认是 assets
+        // assetsDir: 'static'
+    }
 })
