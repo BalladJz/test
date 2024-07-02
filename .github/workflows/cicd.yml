@@ -1,8 +1,8 @@
 name: reploy
 
 on:
-  push
-  # workfolw_dispatch:
+  workflow_dispatch:
+  # push
 jobs:
   job1:
     runs-on: ubuntu-latest
