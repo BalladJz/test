@@ -91,7 +91,7 @@
  * 1.href：href是必选属性，指定了文档的基础url地址
  *    如果希望将文档的基础URL定义为https：//www.abc.com，
  *    则可以使用如下语句：<base href="http://www.abc.com">
- *    如果文档的超链接指向welcom.html,则它实际上指向的是如下url地址：https://www.abc.com/welocme.html。
+ *    如果文档的超链接指向welcome.html,则它实际上指向的是如下url地址：https://www.abc.com/welocme.html。
  * 2.target 定义了当文档中的链接点击后的打开方式_blank，_self，_parrent，_top。
  */
 
