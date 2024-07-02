@@ -1,8 +1,15 @@
 name: reploy
 
 on:
-  workflow_dispatch:
+  # 监听 push 操作 推送代码自动触发
   # push
+
+  # 只监听 staging 和 master 分支的 push 操作
+  # pull_request:
+  #   branches: [staging, master]
+
+  # 手动触发 actions， 允许手动从 Actions tab 运行这个 workflows
+  workflow_dispatch:
 jobs:
   job1:
     runs-on: ubuntu-latest
