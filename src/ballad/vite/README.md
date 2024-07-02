@@ -348,7 +348,7 @@ module.export = {
 `静态资源：在服务端，除了动态API以外，99%都是静态资源，而在前端一般会把图片，视频（src下的assets目录下）`
 <br/>
 
-`vite 对静态资源基本上是开箱即用的，除了一些特殊资源 比如 svg`
+`vite 对静态资源基本上是开箱即用的，除了一些特殊资源`
 ```js
 对于前端来说的 静态资源导入，如果导入路径上加上 ?raw 的话 会把资源变成 二进制的字符串 （Buffer）
                  svg资源 如果导入路径上加上 ?skipsvgo 直接当成组件渲染 ？？？
@@ -359,10 +359,21 @@ module.export = {
 ```
 
 
-#### vite  resolve.alias的原理
+#### vite  resolve.alias的原理 develop-server 文件下
 
 
 
+#### vite 中处理 svg 资源
+`vite 对svg依旧是开箱即用的 scalable vector graphics 可伸缩矢量图形`
+
+```js
+优点：
+1、svg不会失真
+2、尺寸小
+
+缺点：
+没法很好的去标识层次丰富的图片信息，因此前端用它作为图标
+```
 
 
 

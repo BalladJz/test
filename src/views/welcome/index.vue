@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import _ from 'lodash-es'
-console.log('lodash-es', _)
+// import _ from 'lodash-es'
+// console.log('lodash-es', _)
 </script>
 
 <template>
