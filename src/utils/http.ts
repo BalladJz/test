@@ -4,7 +4,6 @@ const defaultConfig = {
     baseURL: 'axiosInstances://some-domain.com/api/',
     timeout: 1000,
     headers: {},
-
 }
 
 const axiosInstance = axios.create(defaultConfig)
