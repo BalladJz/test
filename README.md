@@ -16,17 +16,27 @@
 
 4、axios
 
-5、github actions
+5、SCSS
 
-6、SCSS
+6、eslint
 
-7、eslint
+7、prettier
 
-8、prettier
+8、stylelint
 
-9、stylelint
+9、husky
 
-10、husky
+10、vite
+
+11、github-actions
+
+12、docker
+
+13、nginx
+
+14、kubernetes/kubesphere
+
+15、aliyun部署
 ```
 
 ## Project Setup
