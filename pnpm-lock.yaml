@@ -17,6 +17,7 @@ specifiers:
   lodash-es: ^4.17.21
   npm-run-all2: ^6.1.1
   pinia: ^2.1.7
+  pinia-plugin-persistedstate: ^3.2.1
   postcss-preset-env: ^9.5.15
   prettier: ^3.0.3
   sass: ^1.77.6
@@ -33,6 +34,7 @@ dependencies:
   echarts: 5.5.1
   lodash-es: 4.17.21
   pinia: 2.1.7_3bat35elw7fkpyzd4gzeihcuka
+  pinia-plugin-persistedstate: 3.2.1_pinia@2.1.7
   postcss-preset-env: 9.5.15
   vue: 3.4.31_typescript@5.2.2
   vue-router: 4.4.0_vue@3.4.31
@@ -2818,6 +2820,14 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /pinia-plugin-persistedstate/3.2.1_pinia@2.1.7:
+    resolution: {integrity: sha512-MK++8LRUsGF7r45PjBFES82ISnPzyO6IZx3CH5vyPseFLZCk1g2kgx6l/nW8pEBKxxd4do0P6bJw+mUSZIEZUQ==}
+    peerDependencies:
+      pinia: ^2.0.0
+    dependencies:
+      pinia: 2.1.7_3bat35elw7fkpyzd4gzeihcuka
+    dev: false
 
   /pinia/2.1.7_3bat35elw7fkpyzd4gzeihcuka:
     resolution: {integrity: sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==}

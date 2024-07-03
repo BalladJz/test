@@ -1,9 +1,13 @@
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
-import Layout from '@/layout/index.vue'
-import mainRouter from './modules/index'
+import { createRouter, createWebHistory, createWebHashHistory, RouterOptions } from 'vue-router'
+// import Layout from '@/layout/index.vue'
 
-// const routes = [welcomeRouter]
-export const routes = [...mainRouter]
+import mainRouter from './modules/index'
+import welcome from './modules/welcome'
+import directiveRouter from './modules/directive'
+import cssScopedRouter from './modules/cssScoped'
+import mapMain from './modules/mapMain'
+
+export const routes = [mainRouter, welcome, directiveRouter, cssScopedRouter, mapMain] as any[]
 
 const router = createRouter({
   // @ts-ignore  
