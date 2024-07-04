@@ -1,6 +1,6 @@
-import shutIcon from '@/assets/svg/shut.svg'
+import shutIcon from '@assets/svg/shut.svg'
 
-import shutSvg from '@/assets/svg/shut.svg?raw'
+import shutSvg from '@assets/svg/shut.svg?raw'
 
 console.log('shutIcon', shutIcon);
 

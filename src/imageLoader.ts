@@ -1,8 +1,8 @@
 // @ts-nocheck
 
 // 此文件主要是学习怎么加载静态资源
-import imgPic from '@/assets/image/ts.png?raw'
-import user from '@/assets/json/index.json'
+import imgPic from '@assets/image/ts.png?raw'
+import user from '@assets/json/index.json'
 
 const img = document.createElement('img')
 

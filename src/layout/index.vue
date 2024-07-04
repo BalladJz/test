@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref } from 'vue'
-import { routes } from '@/router/index'
-import useBalladStore from '@/store/modules/Ballad'
-import ScreenDataV from '@/components/ScreenDataV/index.vue'
+import { routes } from '@router/index'
+import useBalladStore from '@store/modules/Ballad'
+import ScreenDataV from '@components/ScreenDataV/index.vue'
 
 const routeList = computed(() => routes.filter((v) => !v.redirect))
 const { cutLayout } = useBalladStore()

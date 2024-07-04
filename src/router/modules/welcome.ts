@@ -1,4 +1,4 @@
-import Layout from '@/layout/index.vue'
+import Layout from '@layout/index.vue'
 
 const welcomeRouter = {
     path: '/',
@@ -8,7 +8,7 @@ const welcomeRouter = {
         {
             path: '/welcome',
             name: 'Welcome',
-            component: () => import('@/views/welcome/index.vue'),
+            component: () => import('@views/welcome/index.vue'),
             meta: {
                 name: '首页'
             }

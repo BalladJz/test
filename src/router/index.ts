@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, createWebHashHistory, RouterOptions } from 'vue-router'
-// import Layout from '@/layout/index.vue'
+// import Layout from '@layout/index.vue'
 
 import mainRouter from './modules/index'
 import welcome from './modules/welcome'

@@ -1,4 +1,4 @@
-import Layout from '@/layout/index.vue'
+import Layout from '@layout/index.vue'
 
 const cssScopedRouter = {
     path: '/',
@@ -8,7 +8,7 @@ const cssScopedRouter = {
         {
             path: '/cssScoped',
             name: 'CssScoped',
-            component: () => import('@/views/cssScoped/index.vue'),
+            component: () => import('@views/cssScoped/index.vue'),
             meta: {
                 name: '样式'
             }

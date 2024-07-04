@@ -1,4 +1,4 @@
-import Layout from '@/layout/index.vue'
+import Layout from '@layout/index.vue'
 
 const mapMainRouter = {
     path: '/',
@@ -8,7 +8,7 @@ const mapMainRouter = {
         {
             path: '/mapMain',
             name: 'MapMain',
-            component: () => import('@/views/mapMain/index.vue'),
+            component: () => import('@views/mapMain/index.vue'),
             meta: {
                 name: '地图'
             }

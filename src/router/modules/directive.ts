@@ -1,4 +1,4 @@
-import Layout from '@/layout/index.vue'
+import Layout from '@layout/index.vue'
 
 const directiveRouter = {
     path: '/',
@@ -8,7 +8,7 @@ const directiveRouter = {
         {
             path: '/directive',
             name: 'Directive',
-            component: () => import('@/views/directive/index.vue'),
+            component: () => import('@views/directive/index.vue'),
             meta: {
                 name: '指令'
             }

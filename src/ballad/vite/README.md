@@ -156,11 +156,11 @@ import lodash_xxx_xxx from '/node_modules/.vite/lodash'
 ```js
 // 当我们调用loadEnv()方法时，它会做如下几件事情：
 // 1、直接找到.env文件 并解析其中的环境变量，并放进一个对象里
-// 2、会讲传进来的mode这个变量进行拼接 => .env.development，并根据我们提供的目录去取对应的配置文件进行解析，并放进一个对象
+// 2、会将传进来的mode这个变量进行拼接 => .env.development，并根据我们提供的目录去取对应的配置文件进行解析，并放进一个对象
 // 3、我们可以理解为：
 const baseEnvConfig = '读取的.env文件配置'
 const modeEnvConfig = '读取的.env.xxxx 相关文件的配置'
-const envConfig = {...modeEnvConfig, ...baseEnvConfig}
+const envConfig = { ...baseEnvConfig, ...modeEnvConfig }
 // 如果有相同配置项，后一个modeEnvConfig的配置，会覆盖前一个baseEnvConfig的配置项
 ```
 
@@ -393,7 +393,20 @@ module.export = {
 `所以利用hash算法 很好的去控制浏览器的缓存机制`
 <br/>
 
-` 构建生产包时的一些配置策略 笔记在 vite.config.ts中`
+`构建生产包时的一些配置策略 笔记在 vite.config.ts中`
+
+
+#### vite 插件
+```js
+// 什么是插件？
+
+// vite 会在生命周期的不同阶段中去调用不同的插件已达到不同的目的
+
+// 比如 redux中间件是干嘛的 redux 会在整个声明周期的不同阶段去调用不同的中间件已到达不同的目的
+```
+
+
+#### 手写 vite-aliases
 
 
 

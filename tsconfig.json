@@ -3,11 +3,159 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "/@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "/@/*": [
+        "src/*"
+      ],
+      "~assets/*": [
+        "src/assets/*"
+      ],
+      "~ballad/*": [
+        "src/ballad/*"
+      ],
+      "~components/*": [
+        "src/components/*"
+      ],
+      "~layout/*": [
+        "src/layout/*"
+      ],
+      "~note/*": [
+        "src/note/*"
+      ],
+      "~plugins/*": [
+        "src/plugins/*"
+      ],
+      "~router/*": [
+        "src/router/*"
+      ],
+      "@store/*": [
+        "src/store/*"
+      ],
+      "~stores/*": [
+        "src/stores/*"
+      ],
+      "~utils/*": [
+        "src/utils/*"
+      ],
+      "~views/*": [
+        "src/views/*"
+      ],
+      "~/*": [
+        "src/*"
+      ],
+      "@/assets/*": [
+        "src/assets/*"
+      ],
+      "@/ballad/*": [
+        "src/ballad/*"
+      ],
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/layout/*": [
+        "src/layout/*"
+      ],
+      "@/note/*": [
+        "src/note/*"
+      ],
+      "@/plugins/*": [
+        "src/plugins/*"
+      ],
+      "@/router/*": [
+        "src/router/*"
+      ],
+      "@/store/*": [
+        "src/store/*"
+      ],
+      "@/stores/*": [
+        "src/stores/*"
+      ],
+      "@/utils/*": [
+        "src/utils/*"
+      ],
+      "@/views/*": [
+        "src/views/*"
+      ],
+      "@//*": [
+        "src/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@ballad/*": [
+        "src/ballad/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layout/*": [
+        "src/layout/*"
+      ],
+      "@note/*": [
+        "src/note/*"
+      ],
+      "@plugins/*": [
+        "src/plugins/*"
+      ],
+      "@router/*": [
+        "src/router/*"
+      ],
+      "@stores/*": [
+        "src/stores/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@views/*": [
+        "src/views/*"
+      ],
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "ballad/*": [
+        "src/ballad/*"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "layout/*": [
+        "src/layout/*"
+      ],
+      "note/*": [
+        "src/note/*"
+      ],
+      "plugins/*": [
+        "src/plugins/*"
+      ],
+      "router/*": [
+        "src/router/*"
+      ],
+      "store/*": [
+        "src/store/*"
+      ],
+      "stores/*": [
+        "src/stores/*"
+      ],
+      "utils/*": [
+        "src/utils/*"
+      ],
+      "views/*": [
+        "src/views/*"
+      ],
+      "/*": [
+        "src/*"
+      ]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/*.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/*.d.ts"
+  ],
   "files": [],
   "references": [
     {
