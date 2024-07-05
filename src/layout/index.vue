@@ -2,7 +2,7 @@
 import { computed, nextTick, onMounted, ref } from 'vue'
 import { routes } from '@router/index'
 import useBalladStore from '@store/modules/Ballad'
-import ScreenDataV from '@components/ScreenDataV/index.vue'
+import ScreenDataV from '@views/dataV/index.vue'
 
 const routeList = computed(() => routes.filter((v) => !v.redirect))
 const { cutLayout } = useBalladStore()
@@ -30,7 +30,7 @@ const goToDataV = async () => {
       <div class="header">
         <div class="flex justify-end items-center mr-[50px] h-full">
           <text
-            class="h-full inline-block px-4 hover:bg-[#435caa] rounded-sm leading-[60px] cursor-pointer"
+            class="h-full inline-block px-4 hover:bg-[#435caa] rounded-sm leading-[60px] cursor-pointer text-[#fff]"
             @click="goToDataV"
           >
             大屏

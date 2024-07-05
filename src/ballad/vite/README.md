@@ -407,6 +407,25 @@ module.export = {
 
 
 #### 手写 vite-aliases
+`手写vite-aliases 其实就是抢在 vite 执行配置文件之前去修改 配置文件`
+```js
+vite 独有的钩子
+config
+configResolved
+configureServer
+configurePreviewServer
+transformIndexHtl
+handleHotUpdate
+
+vite 的插件 比如返回给 vite 一个对象，然后合并你 配置对象 与 你返回的对象 形成新的配置对象
+
+```
+
+```js
+config :
+在解析 Vite 配置前调用。钩子接收原始用户配置（命令行选项指定的会与配置文件合并）和一个描述配置环境的变量，包含正在使用的 mode 和 command。它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置（如果默认的合并不能达到预期的结果）。
+
+```
 
 
 

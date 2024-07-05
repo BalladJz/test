@@ -146,6 +146,12 @@
       ],
       "/*": [
         "src/*"
+      ],
+      "@plugin_ballad/*": [
+        "src/plugin_ballad/*"
+      ],
+      "@ballad_plugin/*": [
+        "src/ballad_plugin/*"
       ]
     }
   },

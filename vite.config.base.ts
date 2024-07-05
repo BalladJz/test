@@ -5,6 +5,8 @@ import { fileURLToPath } from 'url'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { ViteAliases } from 'vite-aliases'
+// import BalladViteAliases from './ballad_plugin/ViteAliases'
+// const BalladViteAliases = require('./ballad_plugin/ViteAliases')
 
 
 /** 路径查找 */
@@ -27,7 +29,8 @@ export default defineConfig({
         ViteAliases({
             // 默认路径别名为 ~
             prefix: '@'
-        })
+        }),
+        // BalladViteAliases()
     ],
     // resolve: {
     //     alias

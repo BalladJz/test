@@ -1,1 +1,0 @@
-console.log('alias 手写');
